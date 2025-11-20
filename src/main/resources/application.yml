@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+          - id: api-service
+            uri: lb://api-service
+            predicates:
+            - Path=/api/**
+            filters:
+            - StripPrefix=1
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: when_authorized
+
+gateway:
+  rateLimit:
+    window: 10000
+    maxRequests: 20
