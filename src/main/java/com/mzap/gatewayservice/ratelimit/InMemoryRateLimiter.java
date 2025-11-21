@@ -31,7 +31,7 @@ public class InMemoryRateLimiter {
     public boolean isAllowed(String key) {
         long now = Instant.now().toEpochMilli();
 
-        Counter counter = counters.computeIfAbsent(key, _ -> new Counter(now, 0));
+        Counter counter = counters.computeIfAbsent(key, k -> new Counter(now, 0));
 
         synchronized (counter) {
             if(now - counter.windowStart > window) {
