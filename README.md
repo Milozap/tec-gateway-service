@@ -44,12 +44,12 @@ It runs on port 8080 by default.
 
 Build image:
 ```shell
-  docker build -t api-service:local .
+  docker build -t gateway-service:local .
 ```
 
 Run container:
 ```shell
-docker run -p 8082:8082 --name api-service api-service:local
+docker run -p 8080:8080 --name gateway-service gateway-service:local
 ```
 
 ### Rate limiting
