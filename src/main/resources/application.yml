@@ -12,6 +12,10 @@ spring:
             - Path=/api/**
             filters:
             - StripPrefix=1
+          - id: api-swagger
+            uri: lb://api-service
+            predicates:
+              - Path=/swagger-ui/**,/v3/api-docs/**,/swagger-ui.html
 
 server:
   port: 8080
