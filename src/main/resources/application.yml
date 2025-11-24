@@ -36,5 +36,5 @@ management:
 
 gateway:
   rateLimit:
-    window: 10000
-    maxRequests: 20
+    window: ${GATEWAY_RATE_LIMIT_WINDOW:-10000}
+    maxRequests: ${GATEWAY_RATE_LIMIT_MAX_REQUESTS:-20}
